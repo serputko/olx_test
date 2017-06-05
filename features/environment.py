@@ -7,7 +7,7 @@ import logging
 
 
 def before_all(context):
-    context.driver = webdriver.Chrome('./chromedriver')
+    context.driver = webdriver.Chrome('.\chromedriver.exe')
     print("Executing before all")
 
 
@@ -24,11 +24,14 @@ def before_feature(context, feature):
 def before_scenario(context, scenario):
     print("User data:", context.config.userdata)
     context.driver.maximize_window()
+    context.driver.delete_all_cookies()
     print("Before scenario\n")
 
 
 def after_scenario(context, scenario):
     print("scenario status" + scenario.status)
+    context.driver.delete_all_cookies()
+
     if scenario.status == "failed":
         if not os.path.exists("failed_scenarios_screenshots"):
             os.makedirs("failed_scenarios_screenshots")

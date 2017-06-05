@@ -1,9 +1,14 @@
-# Created by arnsh at 04.06.17
-Feature: login
+Feature: Login
   # Enter feature description here
 
-  Scenario: successful login with valid credentials
+  Scenario: Successful login with valid credentials
     Given User is on 'Main' page
     And User clicked on 'My profile'
-    When User login
+    When User login with valid credentials
     Then User should be logged in
+
+  Scenario: Error message should be displayed while logging in with invalid credentials
+    Given User is on 'Main' page
+    And User clicked on 'My profile'
+    When User login with invalid credentials
+    Then Error message should be displayed

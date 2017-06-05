@@ -1,5 +1,4 @@
 class BasePage(object):
-
     def __init__(self, context):
         self.driver = context.driver
         self.title = ''
@@ -7,6 +6,7 @@ class BasePage(object):
 
     def open(self):
         self.driver.get(self.url)
+        return self
 
     def get_title(self):
         return self.driver.title

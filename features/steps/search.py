@@ -6,31 +6,71 @@ from pages.searchpage import SearchPage
 use_step_matcher("re")
 
 
-@given("User is on 'Main' page")
+@step("User is on 'Main' page")
 def step_impl(context):
-    HomePage(context).open()
+    context.page = HomePage(context).open()
 
 
-@when("User filled search field with (?P<search>.+)")
+@step("User filled search field with (?P<search>.+)")
 def step_impl(context, search):
-    HomePage(context).input_search(search)
+    context.page.input_search(search)
 
 
-@then("Clicked on Search button")
+@step("Clicked on Search button")
 def step_impl(context):
-    HomePage(context).search()
+    context.page = context.page.search()
 
 
 @step("Selected (?P<category>.+) from the Categories")
 def step_impl(context, category):
-    SearchPage(context).select_category(category)
+    context.page = context.page.select_category(category)
 
 
-@then("A list of adverts with a (?P<search>.+)")
+@step("A list of adverts with a (?P<search>.+) is displayed")
 def step_impl(context, search):
-    SearchPage(context).assert_results_consists(search)
+    context.page = context.page.assert_results_consists(search)
 
 
+@step("Selected all types of goods")
+def step_impl(context):
+    context.page.select_type_of_items('All')
 
 
+@step("Selected private types of goods")
+def step_impl(context):
+    context.page.select_type_of_items('Private')
 
+
+@step("Selected business types of goods")
+def step_impl(context):
+    context.page.select_type_of_items('Business')
+
+
+@step("Applied new sort filter")
+def step_impl(context):
+    context.page.select_sorting_type('New')
+
+
+@step("Applied cheap sort filter")
+def step_impl(context):
+    context.page.select_sorting_type('Cheap')
+
+
+@step("Applied expensive sort filter")
+def step_impl(context):
+    context.page.select_sorting_type('Expensive')
+
+
+@step("Selected currency Hryvna")
+def step_impl(context):
+    context.page.select_currency('HRN')
+
+
+@step("Selected currency USD")
+def step_impl(context):
+    context.page.select_currency('USD')
+
+
+@step("Selected currency EUR")
+def step_impl(context):
+    context.page.select_currency('EUR')

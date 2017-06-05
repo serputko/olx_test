@@ -2,6 +2,7 @@ from pages.basepage import BasePage
 from selenium import webdriver
 from pages.locators import HomePage as hp
 from pages.loginpage import LoginPage
+from pages.searchpage import SearchPage
 
 
 class HomePage(BasePage):
@@ -15,6 +16,7 @@ class HomePage(BasePage):
 
     def search(self):
         self.driver.find_element(*hp.SEARCH_BUTTON).click()
+        return SearchPage(self)
 
     def open_login_page(self):
         self.driver.find_element(*hp.PROFILE_BUTTON).click()
