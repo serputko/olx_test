@@ -1,5 +1,5 @@
-import time
 from behave import *
+
 from pages.homepage import HomePage
 from pages.searchpage import SearchPage
 

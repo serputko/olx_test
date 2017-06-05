@@ -10,7 +10,7 @@ Feature: search
     And A list of adverts with a <search>
 
     Examples:
-    |search       |category     |
-    |Крокодил     |Животные     |
-    |Катамаран    |Животные     |
-    |Iphone s4    |Електроника  |
+      | search    | category    |
+      | Крокодил  | Животные    |
+      | Катамаран | Животые     |
+      | Iphone s4 | Електроника |

@@ -1,28 +1,21 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium import webdriver
 from pages.basepage import BasePage
-from pages.searchpage import SearchPage
+from selenium import webdriver
+from pages.locators import HomePage as hp
+from pages.loginpage import LoginPage
+
 
 class HomePage(BasePage):
-
-    def __init__ (self, context):
+    def __init__(self, context):
         super().__init__(context)
         self.title = 'Безкоштовні оголошення OLX.ua від Slando: дошка оголошень України — купівля/продаж бу товарів на сайті OLX.ua'
         self.url = 'http://olx.ua'
 
     def input_search(self, search):
-        self.driver.find_element_by_css_selector('input.queryfield').send_keys(search)
+        self.driver.find_element(*hp.INPUT_FIELD).send_keys(search)
 
     def search(self):
-        self.driver.find_element_by_id('submit-searchmain').click()
+        self.driver.find_element(*hp.SEARCH_BUTTON).click()
 
-
-
-
-def test(context):
-    settings_available = [1, 1, 1]
-    context.driver = webdriver.Firefox()
-    context.driver.get('http://   ')
-    a = context.driver.find_elements_by_css_selector('.settings')
-    k = [i.text for i in a]
-    assert k in a
+    def open_login_page(self):
+        self.driver.find_element(*hp.PROFILE_BUTTON).click()
+        return LoginPage(self)
