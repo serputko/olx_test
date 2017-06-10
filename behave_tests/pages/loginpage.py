@@ -1,7 +1,8 @@
-from pages.basepage import BasePage
-from pages.locators import LoginPage as lp
-from pages.profilepage import ProfilePage
-from utils import utils
+from behave_tests.pages.basepage import BasePage
+from behave_tests.pages.locators import LoginPage as lp
+from behave_tests.utils.utils import Utils as utils
+
+from behave_tests.pages.profilepage import ProfilePage
 
 
 class LoginPage(BasePage):
@@ -11,14 +12,14 @@ class LoginPage(BasePage):
         self.url = 'https://www.olx.ua/uk/account/'
 
     def login_with_valid_credentials(self):
-        credentials = utils.get_valid_credentials()
+        credentials = utils().get_valid_credentials()
         self.driver.find_element(*lp.LOGIN_FIELD).send_keys(credentials['User'])
         self.driver.find_element(*lp.PASSWORD_FIELD).send_keys(credentials['Password'])
         self.driver.find_element(*lp.LOGIN_BUTTON).click()
         return ProfilePage(self)
 
     def login_with_invalid_credentials(self):
-        credentials = utils.get_invalid_credentials()
+        credentials = utils().get_invalid_credentials()
         self.driver.find_element(*lp.LOGIN_FIELD).send_keys(credentials['User'])
         self.driver.find_element(*lp.PASSWORD_FIELD).send_keys(credentials['Password'])
         self.driver.find_element(*lp.LOGIN_BUTTON).click()

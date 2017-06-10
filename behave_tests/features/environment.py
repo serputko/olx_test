@@ -7,7 +7,7 @@ import logging
 
 
 def before_all(context):
-    context.driver = webdriver.Chrome('.\chromedriver.exe')
+    context.driver = webdriver.Chrome('.\\behave_tests\chromedriver.exe')
     print("Executing before all")
 
 

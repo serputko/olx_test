@@ -1,8 +1,8 @@
-from pages.basepage import BasePage
-from selenium import webdriver
-from pages.locators import HomePage as hp
-from pages.loginpage import LoginPage
-from pages.searchpage import SearchPage
+from behave_tests.pages.basepage import BasePage
+from behave_tests.pages.locators import HomePage as hp
+from behave_tests.pages.searchpage import SearchPage
+
+from behave_tests.pages.loginpage import LoginPage
 
 
 class HomePage(BasePage):

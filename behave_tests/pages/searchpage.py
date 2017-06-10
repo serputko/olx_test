@@ -1,9 +1,6 @@
-
+from behave_tests.pages.basepage import BasePage
+from behave_tests.pages.locators import SearchPage as sp
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.wait import WebDriverWait
-
-from pages.basepage import BasePage
-from pages.locators import SearchPage as sp
 
 
 class SearchPage(BasePage):

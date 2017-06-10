@@ -1,5 +1,4 @@
-from pages.basepage import BasePage
-from pages.locators import LoginPage as lp
+from behave_tests.pages.basepage import BasePage
 
 
 class ProfilePage(BasePage):
